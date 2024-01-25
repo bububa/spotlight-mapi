@@ -47,7 +47,7 @@ type BaseRequest struct {
 	AccessToken string `json:"access_token,omitempty"`
 }
 
-func (r BaseRequest) SetApp(appID string, accessToken string) {
+func (r *BaseRequest) SetApp(appID string, accessToken string) {
 	r.AppID = appID
 	r.AccessToken = accessToken
 }
