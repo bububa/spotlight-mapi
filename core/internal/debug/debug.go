@@ -42,8 +42,8 @@ func PrintPostJSONRequest(url string, body []byte, debug bool) {
 	const format = "[DEBUG] [API] JSON POST %s\n" +
 		"http request body:\n%s\n"
 
-	buf := util.GetBufferPool()
-	defer util.PutBufferPool(buf)
+	buf := util.NewBufferPool()
+	defer util.ReleaseBufferPool(buf)
 	json.Indent(buf, body, "", "    ")
 	log.Printf(format, url, buf.String())
 }
@@ -58,8 +58,8 @@ func PrintJSONRequest(method string, url string, header http.Header, body []byte
 		"http request header:\n%s\n" +
 		"http request body:\n%s\n"
 
-	buf := util.GetBufferPool()
-	defer util.PutBufferPool(buf)
+	buf := util.NewBufferPool()
+	defer util.ReleaseBufferPool(buf)
 	json.Indent(buf, body, "", "\t")
 	headers := make([]string, 0, len(header))
 	for k := range header {
@@ -83,8 +83,8 @@ func PrintPostMultipartRequest(url string, mp map[string]string, debug bool) {
 
 // DecodeJSONHttpResponse decode json response with debug
 func DecodeJSONHttpResponse(r io.Reader, v interface{}, debug bool) ([]byte, error) {
-	buf := util.GetBufferPool()
-	defer util.PutBufferPool(buf)
+	buf := util.NewBufferPool()
+	defer util.ReleaseBufferPool(buf)
 	tee := io.TeeReader(r, buf)
 	if err := json.NewDecoder(tee).Decode(v); err != nil {
 		return buf.Bytes(), err

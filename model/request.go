@@ -5,8 +5,6 @@ import (
 )
 
 type Request interface {
-	// SetApp set appid and access token to request
-	SetApp(appID string, accessToken string)
 }
 
 // PostRequest post request interface
@@ -43,11 +41,6 @@ type UploadRequest interface {
 type BaseRequest struct {
 	// AppID 应用ID
 	AppID string `json:"app_id,omitempty"`
-	// AccessToken 访问令牌
-	AccessToken string `json:"access_token,omitempty"`
-}
-
-func (r *BaseRequest) SetApp(appID string, accessToken string) {
-	r.AppID = appID
-	r.AccessToken = accessToken
+	// Secret 应用secret
+	Secret string `json:"secret,omitempty"`
 }
