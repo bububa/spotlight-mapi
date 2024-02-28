@@ -7,9 +7,9 @@ import (
 
 // Request 转化回传请求
 type Request struct {
-	// AppID
+	// AppID 开发组id，联系运营获取
 	AppID string `json:"app_id,omitempty"`
-	// AccessToken
+	// AccessToken 开发者id对应的验证token，联系运营获取
 	AccessToken string `json:"access_token,omitempty"`
 	// EventType 事件类型
 	EventType enum.EventType `json:"event_type,omitempty"`
