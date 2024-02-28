@@ -1,6 +1,8 @@
 package oauth
 
 import (
+	"strconv"
+
 	"github.com/bububa/spotlight-mapi/enum"
 	"github.com/bububa/spotlight-mapi/model"
 	"github.com/bububa/spotlight-mapi/util"
@@ -21,7 +23,7 @@ type URLRequest struct {
 func (r URLRequest) Encode() string {
 	values := util.NewUrlValues()
 	defer util.ReleaseUrlValues(values)
-	values.Set("app_id", r.AppID)
+	values.Set("app_id", strconv.FormatUint(r.AppID, 10))
 	values.Set("scope", string(util.JSONMarshal(r.Scope)))
 	values.Set("redirect_uri", r.RedirectURI)
 	if r.State != "" {

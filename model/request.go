@@ -42,7 +42,7 @@ type UploadRequest interface {
 
 type BaseRequest struct {
 	// AppID 应用ID
-	AppID string `json:"app_id,omitempty"`
+	AppID uint64 `json:"app_id,omitempty"`
 	// Secret 应用secret
 	Secret string `json:"secret,omitempty"`
 }
