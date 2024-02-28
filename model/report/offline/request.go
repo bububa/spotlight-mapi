@@ -8,7 +8,7 @@ import (
 // Request 离线报表数据 API Request
 type Request struct {
 	// AdvertiserID 广告主ID
-	AdvertiserID string `json:"advertiser_id"`
+	AdvertiserID uint64 `json:"advertiser_id"`
 	// StartDate 开始时间，格式 yyyy-MM-dd
 	StartDate string `json:"start_date,omitempty"`
 	// EndDate 结束时间，格式 yyyy-MM-dd
