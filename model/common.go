@@ -52,6 +52,10 @@ func (u64 JSONUint64) Value() uint64 {
 	return uint64(u64)
 }
 
+func (u64 JSONUint64) String() string {
+	return strconv.FormatUint(u64.Value(), 10)
+}
+
 // Int64 support string quoted number in json
 type Int64 int64
 

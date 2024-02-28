@@ -3,7 +3,6 @@ package oauth
 import (
 	"github.com/bububa/spotlight-mapi/enum"
 	"github.com/bububa/spotlight-mapi/model"
-	"github.com/bububa/spotlight-mapi/model/advertiser"
 	"github.com/bububa/spotlight-mapi/util"
 )
 
@@ -26,7 +25,7 @@ type AccessToken struct {
 	// PlatformType 平台类型，1：聚光，2：蒲公英
 	PlatformType enum.PlatformType `json:"platform_type,omitempty"`
 	// ApprovalAdvertisers 授权广告主账号，品牌开发者与服务商开发者时有值
-	ApprovalAdvertisers []advertiser.Advertiser `json:"approval_advertisers,omitempty"`
+	ApprovalAdvertisers []Advertiser `json:"approval_advertisers,omitempty"`
 }
 
 // AccessTokenRequest 获取Token API Request

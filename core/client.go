@@ -135,39 +135,6 @@ func (c *SDKClient) Get(ctx context.Context, gw string, req model.GetRequest, re
 	return c.fetch(ctx, httpReq, resp)
 }
 
-// GetBytes get bytes api
-func (c *SDKClient) GetBytes(ctx context.Context, gw string, req model.GetRequest, accessToken string) ([]byte, error) {
-	var reqUrl string
-	if strings.HasPrefix(gw, "https://") {
-		reqUrl = gw
-	} else {
-		reqUrl = util.StringsJoin(BASE_URL, gw)
-	}
-	if req != nil {
-		reqUrl = util.StringsJoin(reqUrl, "?", req.Encode())
-	}
-	debug.PrintGetRequest(reqUrl, c.debug)
-	httpReq, err := http.NewRequest("GET", reqUrl, nil)
-	if err != nil {
-		return nil, err
-	}
-	if accessToken != "" {
-		httpReq.Header.Add("Access-Token", accessToken)
-	}
-	if c.sandbox {
-		httpReq.Header.Add("X-Debug-Mode", "1")
-	}
-	if c.limiter != nil {
-		c.limiter.Take()
-	}
-	httpResp, err := c.client.Do(httpReq)
-	if err != nil {
-		return nil, err
-	}
-	defer httpResp.Body.Close()
-	return io.ReadAll(httpResp.Body)
-}
-
 // Upload multipart/form-data post
 func (c *SDKClient) Upload(ctx context.Context, gw string, req model.UploadRequest, resp model.Response, accessToken string) error {
 	buf := util.NewBufferPool()
@@ -221,6 +188,27 @@ func (c *SDKClient) Upload(ctx context.Context, gw string, req model.UploadReque
 		c.limiter.Take()
 	}
 	return c.fetch(ctx, httpReq, resp)
+}
+
+// PostHawkingLeads
+func (c *SDKClient) PostHawkingLeads(ctx context.Context, req model.PostRequest) error {
+	var reqBytes []byte
+	if req != nil {
+		reqBytes = req.Encode()
+	}
+	httpReq, err := http.NewRequest("POST", HAWKLING_LEADS_URL, bytes.NewReader(reqBytes))
+	if err != nil {
+		return err
+	}
+	httpReq.Header.Add("Content-Type", "application/json")
+	if c.sandbox {
+		httpReq.Header.Add("X-Debug-Mode", "1")
+	}
+	if c.limiter != nil {
+		c.limiter.Take()
+	}
+	debug.PrintJSONRequest("POST", HAWKLING_LEADS_URL, httpReq.Header, reqBytes, c.debug)
+	return c.fetch(ctx, httpReq, nil)
 }
 
 // fetch execute http request

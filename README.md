@@ -18,6 +18,7 @@
 
 - 账户服务
   - 广告主(api/advertiser)
+    - 获取accessToken [ AccessToken(ctx context.Context, clt *core.SDKClient, advertiserID uint64) (*oauth.AccessToken, error) ]
     - 获取账号余额接口 [ BalanceInfo(ctx context.Context, clt *core.SDKClient, req *advertiser.BalanceInfoRequest, accessToken string) (*advertiser.Balance, error) ]
 
 - 广告投放
@@ -40,5 +41,11 @@
 
 - 转化追踪(api/conversion)
   - 生成点击监测链接 [ ClickMonitorLink(ctx context.Context, clt *core.SDKClient, req string) (string, error) ]
-  - 转化回传 [ Conversion(ctx context.Context, clt *core.SDKClient, req *conversion.Request, accessToken string) error ]
+  - 外链落地页
+      - 外链线索数据回传 [ Conversion(ctx context.Context, clt *core.SDKClient, req *conversion.Request, accessToken string) error ]
+      - 线索转化数据回传 [ AuroraLeads(ctx context.Context, clt *core.SDKClient, req *conversion.AuroraLeadsRequest) error ]
+  - 聚光落地页
+      - 聚光落地页线索数据回传 [ HawkingLeads(ctx context.Context, clt *core.SDKClient, req *conversion.HawkingLeadsRequest) error ]
+  - 口令码
+      - APP口令码数据回传 [ App(ctx context.Context, clt *core.SDKClient, req *conversion.AppRequest) error ]
 

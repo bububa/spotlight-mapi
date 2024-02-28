@@ -2,6 +2,8 @@ package model
 
 import (
 	"io"
+
+	"github.com/bububa/spotlight-mapi/util"
 )
 
 type Request interface {
@@ -43,4 +45,17 @@ type BaseRequest struct {
 	AppID string `json:"app_id,omitempty"`
 	// Secret 应用secret
 	Secret string `json:"secret,omitempty"`
+}
+
+// CommonRequest 通用 API Request
+type CommonRequest struct {
+	// AdvertiserID 广告主ID
+	AdvertiserID uint64 `json:"advertiser_id,omitempty"`
+	// Method 请求方法
+	Method string `json:"method,omitempty"`
+}
+
+// Encode implement PostRequest interface
+func (r CommonRequest) Encode() []byte {
+	return util.JSONMarshal(r)
 }
