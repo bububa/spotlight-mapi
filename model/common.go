@@ -221,3 +221,11 @@ type CodeNamePair struct {
 	// Children 子节点
 	Children []CodeNamePair `json:"children,omitempty"`
 }
+
+// PageRespDTO 分页信息
+type PageRespDTO struct {
+	// PageIndex 页码
+	PageIndex int64 `json:"page_index,omitempty"`
+	// TotalCount 总数量
+	TotalCount int64 `json:"total_count,omitempty"`
+}

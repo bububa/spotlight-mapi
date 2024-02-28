@@ -24,5 +24,5 @@ func (r AdvertiserRequest) Encode() []byte {
 // AdvertiserResponse 账户层级实时数据 API Response
 type AdvertiserResponse struct {
 	model.BaseResponse
-	Data *report.Metric `json:"data,omitempty"`
+	Data *report.DataReportDTO `json:"data,omitempty"`
 }

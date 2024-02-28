@@ -2,8 +2,8 @@ package report
 
 import "github.com/bububa/spotlight-mapi/model"
 
-// Metric 指标
-type Metric struct {
+// DataReportDTO 数据指标
+type DataReportDTO struct {
 	// Fee 推广消费金额
 	Fee model.Float64 `json:"fee,omitempty"`
 	// Impression 推广展现量
