@@ -16,7 +16,7 @@ import (
 
 // SDKClient sdk client
 type SDKClient struct {
-	appID   string
+	appID   uint64
 	secret  string
 	debug   bool
 	sandbox bool
@@ -25,7 +25,7 @@ type SDKClient struct {
 }
 
 // NewSDKClient 创建SDKClient
-func NewSDKClient(appID string, secret string) *SDKClient {
+func NewSDKClient(appID uint64, secret string) *SDKClient {
 	return &SDKClient{
 		appID:  appID,
 		secret: secret,
@@ -58,7 +58,7 @@ func (c *SDKClient) SetRateLimiter(limiter RateLimiter) {
 	c.limiter = limiter
 }
 
-func (c *SDKClient) AppID() string {
+func (c *SDKClient) AppID() uint64 {
 	return c.appID
 }
 
