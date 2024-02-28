@@ -2,13 +2,15 @@ package conversion
 
 import (
 	"github.com/bububa/spotlight-mapi/enum"
-	"github.com/bububa/spotlight-mapi/model"
 	"github.com/bububa/spotlight-mapi/util"
 )
 
 // Request 转化回传请求
 type Request struct {
-	model.BaseRequest
+	// AppID
+	AppID string `json:"app_id,omitempty"`
+	// AccessToken
+	AccessToken string `json:"access_token,omitempty"`
 	// EventType 事件类型
 	EventType enum.EventType `json:"event_type,omitempty"`
 	// Timestamp 事件发生时间, 时间戳格式，毫秒

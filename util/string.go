@@ -8,12 +8,12 @@ func StringsJoin(strs ...string) string {
 	if n <= 0 {
 		return ""
 	}
-	builder := GetStringsBuilder()
+	builder := NewStringsBuilder()
 	builder.Grow(n)
 	for _, s := range strs {
 		builder.WriteString(s)
 	}
 	ret := builder.String()
-	PutStringsBuilder(builder)
+	ReleaseStringsBuilder(builder)
 	return ret
 }

@@ -2,18 +2,27 @@ package util
 
 import (
 	"crypto"
+	"crypto/md5"
 	"crypto/rand"
 	"crypto/rsa"
 	"crypto/sha256"
 	"crypto/x509"
+	"encoding/hex"
 	"encoding/pem"
 	"errors"
 	"io"
+	"strings"
 )
 
 // func init() {
 // 	mrand.Seed(time.Now().UnixNano())
 // }
+
+func Md5String(req string) string {
+	h := md5.New()
+	io.WriteString(h, req)
+	return strings.ToUpper(hex.EncodeToString(h.Sum(nil)))
+}
 
 // ReadPublicKeyFromPem read public key from pem file
 func ReadPublicKeyFromPem(r io.Reader) (*rsa.PublicKey, error) {

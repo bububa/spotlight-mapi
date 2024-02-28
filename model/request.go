@@ -2,11 +2,11 @@ package model
 
 import (
 	"io"
+
+	"github.com/bububa/spotlight-mapi/util"
 )
 
 type Request interface {
-	// SetApp set appid and access token to request
-	SetApp(appID string, accessToken string)
 }
 
 // PostRequest post request interface
@@ -43,11 +43,19 @@ type UploadRequest interface {
 type BaseRequest struct {
 	// AppID 应用ID
 	AppID string `json:"app_id,omitempty"`
-	// AccessToken 访问令牌
-	AccessToken string `json:"access_token,omitempty"`
+	// Secret 应用secret
+	Secret string `json:"secret,omitempty"`
 }
 
-func (r *BaseRequest) SetApp(appID string, accessToken string) {
-	r.AppID = appID
-	r.AccessToken = accessToken
+// CommonRequest 通用 API Request
+type CommonRequest struct {
+	// AdvertiserID 广告主ID
+	AdvertiserID uint64 `json:"advertiser_id,omitempty"`
+	// Method 请求方法
+	Method string `json:"method,omitempty"`
+}
+
+// Encode implement PostRequest interface
+func (r CommonRequest) Encode() []byte {
+	return util.JSONMarshal(r)
 }

@@ -13,13 +13,13 @@ var bufferPool = sync.Pool{
 	},
 }
 
-func GetBufferPool() *bytes.Buffer {
+func NewBufferPool() *bytes.Buffer {
 	buf := bufferPool.Get().(*bytes.Buffer)
 	buf.Reset()
 	return buf
 }
 
-func PutBufferPool(buf *bytes.Buffer) {
+func ReleaseBufferPool(buf *bytes.Buffer) {
 	bufferPool.Put(buf)
 }
 
@@ -29,13 +29,13 @@ var stringsBuilder = sync.Pool{
 	},
 }
 
-func GetStringsBuilder() *strings.Builder {
+func NewStringsBuilder() *strings.Builder {
 	b := stringsBuilder.Get().(*strings.Builder)
 	b.Reset()
 	return b
 }
 
-func PutStringsBuilder(b *strings.Builder) {
+func ReleaseStringsBuilder(b *strings.Builder) {
 	stringsBuilder.Put(b)
 }
 
@@ -45,7 +45,7 @@ var urlValuesPool = sync.Pool{
 	},
 }
 
-func GetUrlValues() url.Values {
+func NewUrlValues() url.Values {
 	vals := urlValuesPool.Get().(url.Values)
 	for k := range vals {
 		vals.Del(k)
@@ -53,6 +53,6 @@ func GetUrlValues() url.Values {
 	return vals
 }
 
-func PutUrlValues(vals url.Values) {
+func ReleaseUrlValues(vals url.Values) {
 	urlValuesPool.Put(vals)
 }

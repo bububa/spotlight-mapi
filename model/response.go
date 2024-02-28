@@ -18,6 +18,10 @@ type Response interface {
 type BaseResponse struct {
 	// Success 是否成功
 	Success bool `json:"success,omitempty"`
+	// Code 返回码
+	Code int `json:"code,omitempty"`
+	// Message 返回信息
+	Message string `json:"message,omitempty"`
 	// ErrorCode 返回码
 	ErrorCode int `json:"errorCode"`
 	// ErrorMsg 返回信息
@@ -33,5 +37,8 @@ func (r BaseResponse) IsError() bool {
 
 // Error implement Response interface
 func (r BaseResponse) Error() string {
-	return util.StringsJoin(strconv.Itoa(r.ErrorCode), ":", r.ErrorMsg)
+	if r.ErrorCode != 0 {
+		return util.StringsJoin(strconv.Itoa(r.ErrorCode), ":", r.ErrorMsg)
+	}
+	return util.StringsJoin(strconv.Itoa(r.Code), ":", r.Message)
 }
