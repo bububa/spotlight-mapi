@@ -62,4 +62,6 @@ type Dimension struct {
 	ItemID string `json:"item_id,omitempty"`
 	// LiveRedID 直播间id
 	LiveRedID string `json:"live_red_id,omitempty"`
+	// KeywordID 关键词id
+	KeywordID uint64 `json:"keyword_id,omitempty"`
 }
