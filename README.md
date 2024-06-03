@@ -53,6 +53,11 @@
     - 创意层级实时数据 [ Creativity(ctx context.Context, clt *core.SDKClient, req *realtime.CreativityRequest, accessToken string) (*realtime.CreativityResponse, error) ]
     - 关键词层级实时数据 [ Keyword(ctx context.Context, clt *core.SDKClient, req *realtime.KeywordRequest, accessToken string) (*realtime.KeywordResponse, error) ]
 
+- 素材管理
+  - 获取直达链接 [ directlink.List(ctx context.Context, clt *core.SDKClient, req *directlink.ListRequest, accessToken string) (*directlink.ListResult, error) ]
+  - 删除直达链接 [ directlink.Delete(ctx context.Context, clt *core.SDKClient, req *directlink.DeleteRequest, accessToken string) error ]
+  - 创建直达链接 [ directlink.Create(ctx context.Context, clt *core.SDKClient, req *directlink.CreateRequest, accessToken string) ([]directlink.DirectLink, error) ]
+
 - 转化追踪(api/conversion)
   - 生成点击监测链接 [ ClickMonitorLink(ctx context.Context, clt *core.SDKClient, req string) (string, error) ]
   - 外链落地页
