@@ -226,7 +226,7 @@ type CodeNamePair struct {
 	Children []CodeNamePair `json:"children,omitempty"`
 }
 
-// PageReqDTO 分页信息
+// PageDTO 分页信息
 type PageDTO struct {
 	// PageIndex 页码
 	PageIndex int64 `json:"page_index,omitempty"`

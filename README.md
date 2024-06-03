@@ -33,6 +33,11 @@
     - 编辑单元 [ Update(ctx context.Context, clt *core.SDKClient, req *unit.UpdateRequest, accessToken string) (uint64, error) ]
     - 修改单元状态 [ UpdateStatus(ctx context.Context, clt *core.SDKClient, req *unit.UpdateStatusRequest, accessToken string) ([]uint64, error) ]
     - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ] 
+  - 广告创意(api/creativity)
+    - 创建笔记创意 [ Create(ctx context.Context, clt *core.SDKClient, req *creativity.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑创意 [ Update(ctx context.Context, clt *core.SDKClient, req *creativity.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改创意状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *creativity.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
+    - 创意查询 [ Search(ctx context.Context, clt *core.SDKClient, req *creativity.SearchRequest, accessToken string) (*creativity.SearchResult, error) ]
 
 - 数据报表
   - 离线报表(api/report/offline)
