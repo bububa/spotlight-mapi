@@ -226,6 +226,14 @@ type CodeNamePair struct {
 	Children []CodeNamePair `json:"children,omitempty"`
 }
 
+// PageDTO 分页信息
+type PageDTO struct {
+	// PageIndex 页码
+	PageIndex int64 `json:"page_index,omitempty"`
+	// PageSize 每页大小
+	PageSize int64 `json:"page_size,omitempty"`
+}
+
 // PageRespDTO 分页信息
 type PageRespDTO struct {
 	// PageIndex 页码

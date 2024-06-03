@@ -20,10 +20,24 @@
   - 广告主(api/advertiser)
     - 获取accessToken [ AccessToken(ctx context.Context, clt *core.SDKClient, advertiserID uint64) (*oauth.AccessToken, error) ]
     - 获取账号余额接口 [ BalanceInfo(ctx context.Context, clt *core.SDKClient, req *advertiser.BalanceInfoRequest, accessToken string) (*advertiser.Balance, error) ]
+    - 账户白名单 [ WhiteList(ctx context.Context, clt *core.SDKClient, req *advertiser.WhiteListRequest, accessToken string) (*advertiser.WhiteList, error) ]
 
 - 广告投放
+  - 广告计划(api/campaign)
+    - 创建计划 [ Create(ctx context.Context, clt *core.SDKClient, req *campaign.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑计划 [ Update(ctx context.Context, clt *core.SDKClient, req *campaign.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改计划状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *campaign.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
+    - 查询计划 [ List(ctx context.Context, clt *core.SDKClient, req *campaign.ListRequest, accessToken string) (*campaign.ListResult, error) ]
   - 广告单元(api/unit)
+    - 创建单元 [ Create(ctx context.Context, clt *core.SDKClient, req *unit.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑单元 [ Update(ctx context.Context, clt *core.SDKClient, req *unit.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改单元状态 [ UpdateStatus(ctx context.Context, clt *core.SDKClient, req *unit.UpdateStatusRequest, accessToken string) ([]uint64, error) ]
     - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ] 
+  - 广告创意(api/creativity)
+    - 创建笔记创意 [ Create(ctx context.Context, clt *core.SDKClient, req *creativity.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑创意 [ Update(ctx context.Context, clt *core.SDKClient, req *creativity.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改创意状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *creativity.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
+    - 创意查询 [ Search(ctx context.Context, clt *core.SDKClient, req *creativity.SearchRequest, accessToken string) (*creativity.SearchResult, error) ]
 
 - 数据报表
   - 离线报表(api/report/offline)
@@ -38,6 +52,11 @@
     - 单元层级实时数据 [ Unit(ctx context.Context, clt *core.SDKClient, req *realtime.UnitRequest, accessToken string) (*realtime.UnitResponse, error) ]
     - 创意层级实时数据 [ Creativity(ctx context.Context, clt *core.SDKClient, req *realtime.CreativityRequest, accessToken string) (*realtime.CreativityResponse, error) ]
     - 关键词层级实时数据 [ Keyword(ctx context.Context, clt *core.SDKClient, req *realtime.KeywordRequest, accessToken string) (*realtime.KeywordResponse, error) ]
+
+- 素材管理
+  - 获取直达链接 [ directlink.List(ctx context.Context, clt *core.SDKClient, req *directlink.ListRequest, accessToken string) (*directlink.ListResult, error) ]
+  - 删除直达链接 [ directlink.Delete(ctx context.Context, clt *core.SDKClient, req *directlink.DeleteRequest, accessToken string) error ]
+  - 创建直达链接 [ directlink.Create(ctx context.Context, clt *core.SDKClient, req *directlink.CreateRequest, accessToken string) ([]directlink.DirectLink, error) ]
 
 - 转化追踪(api/conversion)
   - 生成点击监测链接 [ ClickMonitorLink(ctx context.Context, clt *core.SDKClient, req string) (string, error) ]
