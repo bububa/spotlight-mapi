@@ -26,7 +26,7 @@ type UnitRequest struct {
 	// MarketTargetingList 营销诉求筛选，3：商品销量_日常推广告，4：产品种草，8：直播推广_日常推广，9：客资收集，10：抢占赛道，14：直播推广_直播预热，15：商品销量_店铺拉新
 	MarketTargetingList []int `json:"market_targeting_list,omitempty"`
 	// UnitFilterState 单元状态过滤，10：有效，4：暂停，2：未开始，3： 已结束，5：处于暂停时段，6：已被计划暂停，8：计划预算不足，11：账户日预算不足，7：现金余额不足，1：已删除，9：所有未删除状态
-	UnitFilterState []int `json:"unit_filter_state,omitempty"`
+	UnitFilterState int `json:"unit_filter_state,omitempty"`
 	// UnitCreateBeginTime 单元创建时间范围的开始
 	UnitCreateBeginTime string `json:"unit_create_begin_time,omitempty"`
 	// UnitCreateEndTime 单元创建时间范围的结束

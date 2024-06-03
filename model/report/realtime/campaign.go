@@ -26,7 +26,7 @@ type CampaignRequest struct {
 	// MarketTargetingList 营销诉求筛选，3：商品销量_日常推广告，4：产品种草，8：直播推广_日常推广，9：客资收集，10：抢占赛道，14：直播推广_直播预热，15：商品销量_店铺拉新
 	MarketTargetingList []int `json:"market_targeting_list,omitempty"`
 	// CampaignFilterState 计划状态过滤，1：有效，2：暂停，4：计划预算不足，7：账户日预算不足，5：现金余额不足，8：处于暂停时段，3：已删除，6：所有未删除状态
-	CampaignFilterState []int `json:"campaign_filter_state,omitempty"`
+	CampaignFilterState int `json:"campaign_filter_state,omitempty"`
 	// CampaignCreateBeginTime 计划创建时间范围的开始
 	CampaignCreateBeginTime string `json:"campaign_create_begin_time,omitempty"`
 	// CampaignCreateEndTime 计划创建时间范围的结束

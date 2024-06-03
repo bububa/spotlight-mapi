@@ -202,4 +202,24 @@ type DataReportDTO struct {
 	WordClickRankThird model.Int `json:"word_click_rank_third,omitempty"`
 	// WorkClickRateThird 前三位点击占比
 	WordClickRateThird model.Float64 `json:"word_click_rate_third,omitempty"`
+	// InvokeAppOpenCnt APP打开量（唤起）
+	InvokeAppOpenCnt model.Int64 `json:"invoke_app_open_cnt,omitempty"`
+	// InvokeAppOpenCost APP打开成本（唤起）
+	InvokeAppOpenCost model.Float64 `json:"invoke_app_open_cost,omitempty"`
+	// InvokeAppEnterStoreCnt APP进店量（唤起）
+	InvokeAppEnterStoreCnt model.Int64 `json:"invoke_app_enter_store_cnt,omitempty"`
+	// InvokeAppEnterStoreCost APP进店成本（唤起）
+	InvokeAppEnterStoreCost model.Float64 `json:"invoke_app_enter_store_cost,omitempty"`
+	// InvokeAppEngagementCnt APP互动量（唤起）
+	InvokeAppEngagementCnt model.Int64 `json:"invoke_app_engagement_cnt,omitempty"`
+	// InvokeAppEngagementCost APP互动成本（唤起）
+	InvokeAppEngagementCost model.Float64 `json:"invoke_app_engagement_cost,omitempty"`
+	// InvokeAppPaymentCnt APP支付次数（唤起）
+	InvokeAppPaymentCnt model.Int64 `json:"invoke_app_payment_cnt,omitempty"`
+	// InvokeAppPaymentCost APP支付成本（唤起）
+	InvokeAppPaymentCost model.Float64 `json:"invoke_app_payment_cost,omitempty"`
+	// SearchInvokeButtonClickCnt APP打开按钮点击量（唤起）
+	SearchInvokeButtonClickCnt model.Int64 `json:"search_invoke_button_click_cnt,omitempty"`
+	// SearchInvokeButtonClickCost APP打开按钮点击成本（唤起）
+	SearchInvokeButtonClickCost model.Float64 `json:"search_invoke_button_click_cost,omitempty"`
 }

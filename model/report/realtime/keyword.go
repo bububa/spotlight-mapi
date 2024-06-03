@@ -24,7 +24,7 @@ type KeywordRequest struct {
 	// PageSize 页大小，默认20,最大1000
 	PageSize int64 `json:"page_size,omitempty"`
 	// KeywordFilterState 关键词状态过滤2：删除3：暂停4：已被单元暂停5：已被计划暂停6：现金余额不足7：计划预算不足8：有效9：计划未开始10：计划已结束11：计划处于暂停阶段12：账户日预算不足
-	KeywordFilterState []int `json:"keyword_filter_state,omitempty"`
+	KeywordFilterState int `json:"keyword_filter_state,omitempty"`
 	// UserBidStrategy 出价策略：0：未使用出价策略1：已使用出价策略
 	UserBidStrategy int `json:"user_bid_strategy,omitempty"`
 	// KeywordName 搜索关键词名词

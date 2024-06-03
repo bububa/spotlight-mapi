@@ -53,6 +53,11 @@ type Request struct {
 	// 23：直播预热量
 	// 24：直播间成交
 	// 25：直播间支付ROI
+	// 35:APP打开（唤起）
+	// 36:APP进店（唤起）
+	// 37:APP互动（唤起）
+	// 38:APP成交-订单数（唤起）
+	// 43:APP打开按钮点击量
 	OptimizeTarget []int `json:"optimize_target,omitempty"`
 	// Placement 广告类型过滤条件
 	// 1：信息流推广
@@ -88,7 +93,16 @@ type Request struct {
 	// 0：自定义创意
 	// 1：程序化创意
 	Programmatic []int `json:"programmatic,omitempty"`
-	// MarketingTarget 营销诉求过滤条件：3：商品销量_日常推广4：产品种草8：直播推广_日常推广9：客资收集10：抢占赛道14：直播推广_直播预热
+	// MarketingTarget 营销诉求过滤条件
+	// 3-商品推广_日常推广
+	// 4-产品种草
+	// 8-直播推广_日常推广
+	// 9-客资收集
+	// 10-抢占赛道
+	// 14-直播推广_直播预告
+	// 15-商品推广_店铺拉新
+	// 16-应用推广_应用唤起
+	// 17-外溢种草
 	MarketingTarget []int `json:"marketing_target,omitempty"`
 }
 
