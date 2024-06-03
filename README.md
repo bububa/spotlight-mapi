@@ -29,6 +29,9 @@
     - 修改计划状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *campaign.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
     - 查询计划 [ List(ctx context.Context, clt *core.SDKClient, req *campaign.ListRequest, accessToken string) (*campaign.ListResult, error) ]
   - 广告单元(api/unit)
+    - 创建单元 [ Create(ctx context.Context, clt *core.SDKClient, req *unit.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑单元 [ Update(ctx context.Context, clt *core.SDKClient, req *unit.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改单元状态 [ UpdateStatus(ctx context.Context, clt *core.SDKClient, req *unit.UpdateStatusRequest, accessToken string) ([]uint64, error) ]
     - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ] 
 
 - 数据报表
