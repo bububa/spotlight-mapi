@@ -20,8 +20,14 @@
   - 广告主(api/advertiser)
     - 获取accessToken [ AccessToken(ctx context.Context, clt *core.SDKClient, advertiserID uint64) (*oauth.AccessToken, error) ]
     - 获取账号余额接口 [ BalanceInfo(ctx context.Context, clt *core.SDKClient, req *advertiser.BalanceInfoRequest, accessToken string) (*advertiser.Balance, error) ]
+    - 账户白名单 [ WhiteList(ctx context.Context, clt *core.SDKClient, req *advertiser.WhiteListRequest, accessToken string) (*advertiser.WhiteList, error) ]
 
 - 广告投放
+  - 广告计划(api/campaign)
+    - 创建计划 [ Create(ctx context.Context, clt *core.SDKClient, req *campaign.CreateRequest, accessToken string) (uint64, error) ]
+    - 编辑计划 [ Update(ctx context.Context, clt *core.SDKClient, req *campaign.UpdateRequest, accessToken string) (uint64, error) ]
+    - 修改计划状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *campaign.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
+    - 查询计划 [ List(ctx context.Context, clt *core.SDKClient, req *campaign.ListRequest, accessToken string) (*campaign.ListResult, error) ]
   - 广告单元(api/unit)
     - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ] 
 
