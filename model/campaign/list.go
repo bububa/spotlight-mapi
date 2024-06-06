@@ -40,5 +40,5 @@ type ListResult struct {
 	// Page 页面和总数
 	Page *model.PageRespDTO `json:"page,omitempty"`
 	// Campaigns 计划查询结果
-	Campaigns []*Campaign `json:"base_campaign_dtos,omitempty"`
+	Campaigns []Campaign `json:"base_campaign_dtos,omitempty"`
 }
