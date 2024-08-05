@@ -8,20 +8,17 @@
 [![GitHub license](https://img.shields.io/github/license/bububa/spotlight-mapi.svg)](https://github.com/bububa/spotlight-mapi/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/bububa/spotlight-mapi.svg)](https://GitHub.com/bububa/spotlight-mapi/releases/)
 
-
 ## API
 
 - Oauth2.0授权(api/oauth)
   - 获取授权链接 [ URL(ctx context.Context, clt *core.SDKClient, req *oauth.URLRequest) string ]
   - 获取token [ AccessToken(ctx context.Context, clt *core.SDKClient, req *oauth.AccessTokenRequest) (*oauth.AccessToken, error) ]
   - 刷新token [ RefreshToken(ctx context.Context, clt *core.SDKClient, req *oauth.RefreshTokenRequest) (*oauth.AccessToken, error) ]
-
 - 账户服务
   - 广告主(api/advertiser)
     - 获取accessToken [ AccessToken(ctx context.Context, clt *core.SDKClient, advertiserID uint64) (*oauth.AccessToken, error) ]
     - 获取账号余额接口 [ BalanceInfo(ctx context.Context, clt *core.SDKClient, req *advertiser.BalanceInfoRequest, accessToken string) (*advertiser.Balance, error) ]
     - 账户白名单 [ WhiteList(ctx context.Context, clt *core.SDKClient, req *advertiser.WhiteListRequest, accessToken string) (*advertiser.WhiteList, error) ]
-
 - 广告投放
   - 广告计划(api/campaign)
     - 创建计划 [ Create(ctx context.Context, clt *core.SDKClient, req *campaign.CreateRequest, accessToken string) (uint64, error) ]
@@ -32,13 +29,12 @@
     - 创建单元 [ Create(ctx context.Context, clt *core.SDKClient, req *unit.CreateRequest, accessToken string) (uint64, error) ]
     - 编辑单元 [ Update(ctx context.Context, clt *core.SDKClient, req *unit.UpdateRequest, accessToken string) (uint64, error) ]
     - 修改单元状态 [ UpdateStatus(ctx context.Context, clt *core.SDKClient, req *unit.UpdateStatusRequest, accessToken string) ([]uint64, error) ]
-    - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ] 
+    - 获取单元列表接口 [ List(ctx context.Context, clt *core.SDKClient, req *unit.ListRequest, accessToken string) (*unit.ListResult, error) ]
   - 广告创意(api/creativity)
     - 创建笔记创意 [ Create(ctx context.Context, clt *core.SDKClient, req *creativity.CreateRequest, accessToken string) (uint64, error) ]
     - 编辑创意 [ Update(ctx context.Context, clt *core.SDKClient, req *creativity.UpdateRequest, accessToken string) (uint64, error) ]
     - 修改创意状态 [ StatusUpdate(ctx context.Context, clt *core.SDKClient, req *creativity.StatusUpdateRequest, accessToken string) ([]uint64, error) ]
     - 创意查询 [ Search(ctx context.Context, clt *core.SDKClient, req *creativity.SearchRequest, accessToken string) (*creativity.SearchResult, error) ]
-
 - 数据报表
   - 离线报表(api/report/offline)
     - 账户层级离线报表数据 [ Advertiser(ctx context.Context, clt *core.SDKClient, req *offline.Request, accessToken string) (*offline.ReportList, error) ]
@@ -52,19 +48,23 @@
     - 单元层级实时数据 [ Unit(ctx context.Context, clt *core.SDKClient, req *realtime.UnitRequest, accessToken string) (*realtime.UnitResponse, error) ]
     - 创意层级实时数据 [ Creativity(ctx context.Context, clt *core.SDKClient, req *realtime.CreativityRequest, accessToken string) (*realtime.CreativityResponse, error) ]
     - 关键词层级实时数据 [ Keyword(ctx context.Context, clt *core.SDKClient, req *realtime.KeywordRequest, accessToken string) (*realtime.KeywordResponse, error) ]
-
 - 素材管理
   - 获取直达链接 [ directlink.List(ctx context.Context, clt *core.SDKClient, req *directlink.ListRequest, accessToken string) (*directlink.ListResult, error) ]
   - 删除直达链接 [ directlink.Delete(ctx context.Context, clt *core.SDKClient, req *directlink.DeleteRequest, accessToken string) error ]
   - 创建直达链接 [ directlink.Create(ctx context.Context, clt *core.SDKClient, req *directlink.CreateRequest, accessToken string) ([]directlink.DirectLink, error) ]
-
+  - 资产事件获取 [ data.EventAssetInfo(ctx context.Context, clt *core.SDKClient, req *data.EventAssetInfoRequest, accessToken string) (*data.EventAssetInfoResult, error) ]
+  - 获取资质列表 [ data.QualInfo(ctx context.Context, clt *core.SDKClient, req *data.QualInfoRequest, accessToken string) (*data.QualInfoResult, error) ]
+  - 门店信息列表 [ data.PoiList(ctx context.Context, clt *core.SDKClient, req *data.PoiListRequest, accessToken string) (*data.PoiListResult, error) ]
+  - 落地页表单查询 [ landingpage.List(ctx context.Context, clt *core.SDKClient, req *landingpage.ListRequest, accessToken string) (*landingpage.ListResult, error) ]
+  - 获取spu列表 [ spu.List(ctx context.Context, clt *core.SDKClient, req *spu.ListRequest, accessToken string) (*spu.ListResult, error) ]
+- 工具
+  - 计划单元名称重复性校验 [ data.CheckNameDup(ctx context.Context, clt *core.SDKClient, req *data.CheckNameDupRequest, accessToken string) (*data.CheckNameDupResult, error) ]
 - 转化追踪(api/conversion)
   - 生成点击监测链接 [ ClickMonitorLink(ctx context.Context, clt *core.SDKClient, req string) (string, error) ]
   - 外链落地页
-      - 外链线索数据回传 [ Conversion(ctx context.Context, clt *core.SDKClient, req *conversion.Request, accessToken string) error ]
-      - 线索转化数据回传 [ AuroraLeads(ctx context.Context, clt *core.SDKClient, req *conversion.AuroraLeadsRequest) error ]
+    - 外链线索数据回传 [ Conversion(ctx context.Context, clt *core.SDKClient, req *conversion.Request, accessToken string) error ]
+    - 线索转化数据回传 [ AuroraLeads(ctx context.Context, clt *core.SDKClient, req *conversion.AuroraLeadsRequest) error ]
   - 聚光落地页
-      - 聚光落地页线索数据回传 [ HawkingLeads(ctx context.Context, clt *core.SDKClient, req *conversion.HawkingLeadsRequest) error ]
+    - 聚光落地页线索数据回传 [ HawkingLeads(ctx context.Context, clt *core.SDKClient, req *conversion.HawkingLeadsRequest) error ]
   - 口令码
-      - APP口令码数据回传 [ App(ctx context.Context, clt *core.SDKClient, req *conversion.AppRequest) error ]
-
+    - APP口令码数据回传 [ App(ctx context.Context, clt *core.SDKClient, req *conversion.AppRequest) error ]
