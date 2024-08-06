@@ -24,7 +24,7 @@ type PoiListResponse struct {
 
 type PoiListResult struct {
 	// PageInfo 分页信息
-	PageInfo *model.PageDTO `json:"page_info,omitempty"`
+	PageInfo *model.Page `json:"page_info,omitempty"`
 	// PoiInfoList 门店列表
 	PoiInfoList []PoiInfo `json:"poi_info_list,omitempty"`
 }

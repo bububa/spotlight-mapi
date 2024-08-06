@@ -28,7 +28,7 @@ type EventAssetInfoResponse struct {
 // EventAssetInfoResult
 type EventAssetInfoResult struct {
 	// Page
-	Page *model.PageDTO `json:"page,omitempty"`
+	Page *model.PageRespDTO `json:"page,omitempty"`
 	// EventAssetDtos 资质信息
 	EventAssetDtos []EventAsset `json:"event_asset_dtos,omitempty"`
 }
