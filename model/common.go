@@ -222,6 +222,8 @@ type CodeNamePair struct {
 	Code string `json:"code,omitempty"`
 	// Name 名称
 	Name string `json:"name,omitempty"`
+	// Description 描述
+	Description string `json:"description,omitempty"`
 	// Children 子节点
 	Children []CodeNamePair `json:"children,omitempty"`
 }
@@ -232,6 +234,14 @@ type PageDTO struct {
 	PageIndex int64 `json:"page_index,omitempty"`
 	// PageSize 每页大小
 	PageSize int64 `json:"page_size,omitempty"`
+}
+
+// Page 分页信息
+type Page struct {
+	// PageNum 页码
+	PageNum int64 `json:"page_num,omitempty"`
+	// TotalCount 总数量
+	TotalCount int64 `json:"total_count,omitempty"`
 }
 
 // PageRespDTO 分页信息

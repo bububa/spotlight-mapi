@@ -58,6 +58,14 @@
   - 落地页表单查询 [ landingpage.List(ctx context.Context, clt *core.SDKClient, req *landingpage.ListRequest, accessToken string) (*landingpage.ListResult, error) ]
   - 获取spu列表 [ spu.List(ctx context.Context, clt *core.SDKClient, req *spu.ListRequest, accessToken string) (*spu.ListResult, error) ]
 - 工具
+  - 定向推词-以词推词 [ keyword.CommondRecommend(ctx context.Context, clt *core.SDKClient, req *keyword.CommonRecommendRequest, accessToken string) (*keyword.CommonRecommendResult, error) ]
+  - 行业类目属性 [ keyword.IndustryTaxonomyAttribute(ctx context.Context, clt *core.SDKClient, req *keyword.IndustryTaxonomyAttributeRequest, accessToken string) (*keyword.IndustryTaxonomyAttributeResult, error) ]
+  - 行业类目 [ keyword.IndustryTaxonomy(ctx context.Context, clt *core.SDKClient, req *keyword.IndustryTaxonomyRequest, accessToken string) (*keyword.IndustryTaxonomyResult, error) ]
+  - 词包推荐 [ keyword.WordBagList(ctx context.Context, clt *core.SDKClient, req *keyword.WordBagListRequest, accessToken string) (*keyword.WordBagListResult, error) ]
+  - 人群预估 [ crowd.Estimate(ctx context.Context, clt *core.SDKClient, req *crowd.EstimateRequest, accessToken string) (*crowd.EstimateResult, error) ]
+  - 获取关键词匹配词库信息 [ target.KeywordMatch(ctx context.Context, clt *core.SDKClient, req *target.KeyywordMatchRequest, accessToken string) (*target.KeywordMatchResult, error) ]
+  - 获取推荐关键词信息 [ target.KeywordRecommend(ctx context.Context, clt *core.SDKClient, req *target.KeywordRecommendRequest, accessToken string) ([]target.KeywordRecommend, error) ]
+  - 获取定向信息 [ target.GetAvailableTargetInfo(ctx context.Context, clt *core.SDKClient, req *target.GetAvailableTargetInfoRequest, accessToken string) (*target.TargetInfo, error) ]
   - 计划单元名称重复性校验 [ data.CheckNameDup(ctx context.Context, clt *core.SDKClient, req *data.CheckNameDupRequest, accessToken string) (*data.CheckNameDupResult, error) ]
 - 转化追踪(api/conversion)
   - 生成点击监测链接 [ ClickMonitorLink(ctx context.Context, clt *core.SDKClient, req string) (string, error) ]

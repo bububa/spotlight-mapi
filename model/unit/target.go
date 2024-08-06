@@ -27,6 +27,10 @@ type TargetConfig struct {
 	DendelionCrowd *DendelionCrowd `json:"dendelion_crowd,omitempty"`
 	// InterestKeywords 关键词兴趣定向，["口红","化妆"]
 	InterestKeywords []string `json:"interest_keywords,omitempty"`
+	// KeywordTargetPeriod 关键词时间周期，单位天，枚举包括 3，7，15，30	关键词行为定向选择时必填
+	KeywordTargetPeriod int `json:"keyword_target_period,omitempty"`
+	// KeywordTargetAction 关键词行为类型，1: 搜索，2: 互动，3: 阅读	关键词行为定向选择时必填
+	KeywordTargetAction []enum.KeywordTargetAction `json:"keyword_target_action,omitempty"`
 	// IntelligentExpension 智能扩量0：关闭1：开启
 	IntelligentExpension int `json:"intelligent_expension,omitempty"`
 	// HaveReverseBloggerFanTarget 是否选择反选博主粉丝人群
@@ -56,7 +60,7 @@ type IndustryInterestTarget struct {
 // CrowdTarget 人群包列表
 type CrowdTarget struct {
 	// CrowdPkg 人群包列表
-	CrowdPkg []CrowdPackage `json:"crowd_package,omitempty"`
+	CrowdPkg []CrowdPackage `json:"crowd_pkg,omitempty"`
 }
 
 // CrowdPackage 人群包
@@ -65,8 +69,22 @@ type CrowdPackage struct {
 	Value string `json:"value,omitempty"`
 	// Name 人群包名称
 	Name string `json:"name,omitempty"`
+	// Desc 人群包描述
+	Desc string `json:"desc,omitempty"`
 	// Type 人群包类型
+	// 人群包的类型,特色人群:outside/common,节促人群:timeliness没有type的时候表示是客户自己上传的人群包
+	// type: ti, TI潜力转化人群（优化目标是ti人群才可使用，本期不涉及）type: expose, 直播间活跃人群（直播间营销目标才可使用,本期不涉及）
 	Type string `json:"type,omitempty"`
+	// GroupID 人群包真实ID
+	GroupID string `json:"group_id,omitempty"`
+	// SyncStatus 同步状态,0:未同步,1:已同步
+	// 只用已同步(1)状态的才可用
+	SyncStatus int `json:"sync_status,omitempty"`
+	// Status 删除可用状态,2:成功,3计算失败:,4:停止更新
+	// 只用成功(2)状态的才可用
+	Status int `json:"status,omitempty"`
+	// DmpPermission
+	DmpPermission bool `json:"dmp_permission,omitempty"`
 }
 
 // RecommendTarget 推荐定向
@@ -86,25 +104,25 @@ type DendelionCrowd struct {
 type NormalDendelionCrowd struct {
 	// ActionType 行为类型:imp,read
 	ActionType enum.CrowdActionType `json:"action_type,omitempty"`
-	// TimePeriod 时间周期，30，90
-	TimePeroid int `json:"time_period,omitempty"`
 	// BrandUserID 品牌用户Id
 	BrandUserID string `json:"brand_user_id,omitempty"`
+	// TimePeriod 时间周期，30，90
+	TimePeroid int `json:"time_period,omitempty"`
 }
 
 type CustomizedDendelionCrowd struct {
 	// ActionType 行为类型:imp,read
 	ActionType enum.CrowdActionType `json:"action_type,omitempty"`
-	// TimePeriod 时间周期，30，90
-	TimePeroid int `json:"time_period,omitempty"`
-	// CrowdID 蒲公英定制人群包Id
-	CrowdID uint64 `json:"crowd_id,omitempty"`
 	// CrowdName 蒲公英定制人群包名称
 	CrowdName string `json:"crowd_name,omitempty"`
 	// NotIDList 笔记ids
 	NoteIDList []string `json:"note_id_list,omitempty"`
 	// Channels 流量渠道：ad/nature
 	Channels []string `json:"channels,omitempty"`
+	// TimePeriod 时间周期，30，90
+	TimePeroid int `json:"time_period,omitempty"`
+	// CrowdID 蒲公英定制人群包Id
+	CrowdID uint64 `json:"crowd_id,omitempty"`
 }
 
 // LiveStreamingFanTarget 直播人群
